@@ -1,6 +1,6 @@
 # 🚀 Edge Observability Optimization (DevOps Intern Assignment)
 
-> **Submission by**: [Your Name/Candidate ID]
+> **Submission by**: [Pushpendra Bairwa]
 > **Context**: Deploying a resource-constrained observability stack on a 2-core / 500MB RAM robot.
 
 ---
@@ -8,7 +8,7 @@
 ## 📖 Project Overview
 This project optimizes a Python-based sensor service that was originally suffering from high resource usage, scrap failures, and poor architectural choices. My goal was to containerize the service, fix the performance bottlenecks, and implement a monitoring stack that fits strictly within a **300 MB RAM budget**.
 
-### 🏗️ Architecture: Before vs. After
+### Architecture: Before vs. After
 
 | Feature | Original "Buggy" Stack | Optimized "Edge" Stack |
 | :--- | :--- | :--- |
@@ -20,7 +20,7 @@ This project optimizes a Python-based sensor service that was originally sufferi
 
 ---
 
-## 📉 Optimization Deep Dive
+## Optimization Deep Dive
 
 ### 1. Docker Storage & Base Image (Task 3.1)
 I migrated the `Dockerfile` to use **Alpine Linux**. This was the single most effective change for disk usage, reducing the image size by **94%**.
@@ -47,11 +47,11 @@ The Python service had "intentional inefficiencies".
     SCRAPE_DURATION = Histogram("sensor_scrape_duration_seconds", "Time spent generating metrics")
     ```
 
-> **Note on Dependencies**: Given the project's minimal footprint (only 2 dependencies: `flask` & `prometheus_client`), I opted to install them directly in the `Dockerfile` to keep the file count low. For a larger production service, I would standardly use a pinned `requirements.txt` or `poetry.lock`.
+> **Note on Dependencies**: Given the project's minimal footprint (only 2 dependencies: `flask` & `prometheus_client`), I opted to install them directly in the `Dockerfile` to keep the file count low. For a larger production service, I would standardly use `requirements.txt`.
 
 ---
 
-## 📊 Performance Budget Report
+## Performance Budget Report
 
 ### Memory Usage Analysis
 The graphs below show the drastic difference in stability.
@@ -72,7 +72,7 @@ The graphs below show the drastic difference in stability.
 
 ---
 
-## 🔧 Troubleshooting & "Lessons Learned"
+## Troubleshooting & "Lessons Learned"
 
 Here are some specific challenges I faced during the implementation (aka the "Design Twist"):
 
@@ -86,7 +86,7 @@ The service was timing out intermittently. Was it the network or the code?
 
 ---
 
-## 🚀 How to Run Review
+## How to Run Review
 
 1.  **Clone & Start**:
     ```bash
@@ -109,4 +109,4 @@ Currently, we scrape the edge device. In a real factory, robots possess dynamic 
 *   **Plan**: Deploy `vmagent` on the robot to buffer data locally and "push" it to a central cloud VictoriaMetrics cluster. This ensures no data loss during WiFi dead zones.
 
 ---
-*Generated for 10xConstruction DevOps Internship Assignment*
+*Created for 10xConstruction DevOps Internship Assignment*
