@@ -11,7 +11,7 @@ services:
           cpus: '0.5'
           memory: 80M
 
-  VictoriaMetrics:
+  victoriametrics:
     image: victoriametrics/victoria-metrics:latest
     container_name: victoriametrics
     ports:
