@@ -1,0 +1,9 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s # Set the evaluation interval to 15 seconds because scraping is done every 15 seconds
+
+scrape_configs:
+  - job_name: "sensor"
+    metrics_path: "/metrics"
+    static_configs:
+      - targets: ["sensor-service:8000"]

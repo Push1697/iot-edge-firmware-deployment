@@ -1,0 +1,35 @@
+# version: "3.8"
+services:
+  sensor-service:
+    build: .
+    ports:
+      - "8000:8000"
+    restart: always
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 80M
+
+  VictoriaMetrics:
+    image: victoriametrics/victoria-metrics:latest
+    container_name: victoriametrics
+    ports:
+      - "8428:8428"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - victoria-data:/storage
+    command:
+      - "-promscrape.config=/etc/prometheus/prometheus.yml"
+      - "-storageDataPath=/storage"
+      - "-promscrape.config.strictParse=false"
+      - "-memory.allowedPercent=60"
+      - "-httpListenAddr=:8428"
+    restart: always
+    deploy:
+      resources:
+        limits:
+          memory: 150M
+
+volumes:
+  victoria-data:
