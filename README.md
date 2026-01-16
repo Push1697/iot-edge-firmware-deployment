@@ -1,4 +1,4 @@
-# Edge Observability Optimization (DevOps Intern Assignment)
+# Edge Observability Optimization (DevOps Project)
 
 > **Submission by**: [Pushpendra Bairwa]
 > **Context**: Deploying a resource-constrained observability stack on a 2-core / 500MB RAM robot.
